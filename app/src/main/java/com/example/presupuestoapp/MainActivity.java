@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //si aqui quieres que vayamos a otra activity haz lo de abajo
 
         } else if (view.getId() == R.id.mesactual) {
-            showToast("Botón mesactual objetivos presionado");
+            Intent intent1 = new Intent(this, Mesactual.class );
+            startActivity(intent1);
         } else if (view.getId() == irTransaccion.getId()) { //aqui sin embargo usamos el objeto boton que ya hemos creado en esta clase para obtener el id
            //este boton nos lleva al add_transaction_layout
             Intent intent1 = new Intent(this, AddTransaction.class );
