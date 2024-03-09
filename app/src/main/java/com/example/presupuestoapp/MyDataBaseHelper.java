@@ -32,9 +32,9 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(@NonNull SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_IMPORTE + " INTEGER, " +
-                COLUMN_DESCRIPCION + " INTEGER, " +
-                COLUMN_MES + " TEXT);";
+                COLUMN_IMPORTE + " DOUBLE, " +
+                COLUMN_DESCRIPCION + " TEXT, " +
+                COLUMN_MES + " INTEGER);";
         db.execSQL(query);
     }
     @Override
@@ -49,18 +49,27 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
      * @param desc
      * @param mes
      */
-    public void addGasto (Integer importe, String desc, String mes){
+    public void addGasto (Double importe, String desc, Integer mes){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
+        try{
+            if(true){
+
+            }
+        } catch(Exception e){
+            Toast.makeText(context, "ERROR: solo se permiten numeros", Toast.LENGTH_LONG).show();
+        }
+
 
         cv.put(COLUMN_IMPORTE, importe);
         cv.put(COLUMN_DESCRIPCION, desc);
         cv.put(COLUMN_MES, mes);
         long result = db.insert(TABLE_NAME,null, cv);
         if(result == -1){
-            Toast.makeText(context, "Fallo al añadir el gasto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo al añadir el gasto", Toast.LENGTH_LONG).show();
         }else {
-            Toast.makeText(context, "Gasto añadido!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Gasto añadido!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -84,9 +93,9 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if(result == -1){
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
         }else {
-            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -95,9 +104,9 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
         if(result == -1){
-            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_LONG).show();
         }
     }
 

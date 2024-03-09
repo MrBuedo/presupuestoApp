@@ -12,19 +12,19 @@
         layout="@layout/app_bar_layout" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/objetivos"
         android:layout_width="212dp"
         android:layout_height="108dp"
         android:background="@color/navy"
         android:text="Fijar objetivos"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/mesactual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/mesactual"
         android:layout_width="212dp"
         android:layout_height="108dp"
         android:background="@color/navy"
@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toTopOf="@+id/irTransaccion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/objetivos"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/mesactual"
         app:layout_constraintVertical_bias="0.5" />
 
     <androidx.recyclerview.widget.RecyclerView

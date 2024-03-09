@@ -25,9 +25,11 @@ public class AddTransaction extends AppCompatActivity {
         setContentView(R.layout.add_transaction_layout);
 
         recyclerView = findViewById(R.id.recyclerView);
+
         importe_input = findViewById(R.id.importe_input);
         descripcion_input = findViewById(R.id.descripcion_input );
         mes_input = findViewById(R.id.mes_input);
+
         addGasto_button = findViewById(R.id.add_button);
 
 
@@ -35,20 +37,52 @@ public class AddTransaction extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(AddTransaction.this);
-                myDB.addGasto(Integer.valueOf(importe_input.getText().toString().trim()),
-                        descripcion_input.getText().toString().trim(),
-                        importe_input.getText().toString().trim());
+
+                Boolean ok = true;
+
+                Integer mes = 0;
+
+                try{
+                    mes = Integer.parseInt(mes_input.getText().toString().trim());
+                    if(mes<1 && mes > 12){
+                        mes_input.setError("El mes debe ser un numero entre el 1 y el 12");
+                        ok = false;
+                    }
+                } catch (Exception e){
+                    importe_input.setError("El mes debe ser un numero");
+                    ok = false;
+                }
+
+
+
+
+                String desc = descripcion_input.getText().toString().trim();
+                Double imp =  0.0;
+                try{
+                    imp = Double.parseDouble(importe_input.getText().toString().trim());
+                } catch (Exception e){
+                    importe_input.setError("El importe debe ser un numero");
+                    ok = false;
+                }
+
+
+                if(desc.isEmpty()){
+                    descripcion_input.setError("La descripcion no puede estar vacía");
+                    ok = false;
+                }
+
+                if(ok){
+                    myDB.addGasto(imp,desc,mes);
+
+                    Toast.makeText(getApplicationContext(), "El boton funciona", Toast.LENGTH_LONG).show();
+                }
+
+
+
             }
         });
 
 
     }
-    public void añadir(){
-        MyDatabaseHelper myDB = new MyDatabaseHelper(AddTransaction.this);
-        myDB.addGasto(Integer.valueOf(importe_input.getText().toString().trim()),
-                descripcion_input.getText().toString().trim(),
-                importe_input.getText().toString().trim());
-        Toast.makeText(this.context, "El boton funciona", Toast.LENGTH_SHORT).show();
-        System.out.println("El boton funciona?");
-    }
+
 }
