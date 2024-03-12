@@ -19,20 +19,24 @@ public class Mesactual extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private MyAdapter adapter;
-    private List<Transacciones> dataList;
+    private List<Transacciones> dataList; //Aqui almacenaremos las transacciones como objetos cuando las saquemos de la DB
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mesactual_layout);
 
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        MyDatabaseHelper myDB = new MyDatabaseHelper(Mesactual.this); //funcionaria tambien el getApplicationContext()
+        MyDatabaseHelper myDB = new MyDatabaseHelper(Mesactual.this); //en lugar de "this" funcionaria tambien el getApplicationContext()
 
+
+        //Sacamos el cursor con todas las transacciones almacenadas
         Cursor cursor = myDB.readAllData();
 
+        //Aqui transformamos el cursor en una List de objetos transaccion
         dataList = getTransacciones(cursor);
         // Cargar datos de ejemplo
         /*
@@ -51,6 +55,10 @@ public class Mesactual extends AppCompatActivity {
         super.onResume();
 
     }
+    /*
+    Este método "getTransacciones" transforma los datos del cursor que da el metodo de MyDataBaseHelper
+    "readAllData()" en una Lista del objeto transacciones
+     */
     private List<Transacciones> getTransacciones(Cursor cursor){
         List<Transacciones> transacciones = new ArrayList<Transacciones>();
         Transacciones tra1 = new Transacciones(0.0, "0", 0);
@@ -70,6 +78,11 @@ public class Mesactual extends AppCompatActivity {
         }
         return transacciones;
     }
+
+    /*
+    Esta clase privada "MyAdapter" es necesaria para poder visualizar las transacciones en forma de lista
+    dentro de la recyclerview. Para Hacerlo utilizamos como elemento intermedio el layout "item_layout"
+     */
     private static class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         private List<Transacciones> transacionList;
@@ -89,11 +102,12 @@ public class Mesactual extends AppCompatActivity {
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             Transacciones data = transacionList.get(position);
 
+            //Este if simplemente nos sirve como una forma de añadirle una cabecera con etiquetas a la tabla
             if(position==0){
                 holder.mes_lbl.setText("Mes");
                 holder.descripcion_lbl.setText("Descripcion");
                 holder.importe_lbl.setText("Importe");
-            }else {
+            }else { //Aqui abajo en cambio lo que hacemos es asignar cada columna de la tabla de la DB al TextViewer donde aparecera la info en pantalla
                 holder.mes_lbl.setText(data.mes.toString());
                 holder.descripcion_lbl.setText(data.descripcion);
                 holder.importe_lbl.setText(data.importe.toString());
@@ -107,6 +121,10 @@ public class Mesactual extends AppCompatActivity {
             return transacionList.size();
         }
 
+        /*
+        Esta clase publica simplemente sirve para identificar cada TextView del layout con un objeto java
+        de tipo TextView
+         */
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             private TextView mes_lbl, descripcion_lbl, importe_lbl;
 

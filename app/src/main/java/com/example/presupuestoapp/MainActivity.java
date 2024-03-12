@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{ //Todos los botones se dirigirán a este view OnClickListener
 
     RecyclerView recyclerView;
-    private Button objetivos, mesactual, irTransaccion;
+    private Button objetivos,totalMes, mesactual, irTransaccion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          */
         objetivos = findViewById(R.id.objetivos);
         objetivos.setOnClickListener(this);
+
+        totalMes = findViewById(R.id.totalMes);
+        totalMes.setOnClickListener(this);
 
         mesactual = findViewById(R.id.mesactual);
         mesactual.setOnClickListener(this);
@@ -69,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (view.getId() == irTransaccion.getId()) { //aqui sin embargo usamos el objeto boton que ya hemos creado en esta clase para obtener el id
            //este boton nos lleva al add_transaction_layout
             Intent intent1 = new Intent(this, AddTransaction.class );
+            startActivity(intent1);
+        } else if(view.getId() == R.id.totalMes){
+            Intent intent1 = new Intent(this, TotalMesActivity.class );
             startActivity(intent1);
         }
     }

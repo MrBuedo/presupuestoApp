@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TotalMesActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/app_bar_layout" />
+
+    <TextView
+        android:id="@+id/totalmes"
+        android:layout_width="292dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:inputType="numberDecimal"
+        android:text="Total Mes"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto1" />
+
+    <TextView
+        android:id="@+id/texto1"
+        android:layout_width="292dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="160dp"
+        android:text="Total Mes"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <Spinner
+        android:id="@+id/spinner_mes"
+        android:layout_width="185dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalmes" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

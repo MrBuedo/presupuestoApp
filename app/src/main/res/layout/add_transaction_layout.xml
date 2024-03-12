@@ -21,23 +21,23 @@
 
     <EditText
         android:id="@+id/importe_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="235sp"
+        android:layout_height="69dp"
         android:layout_marginTop="60dp"
         android:ems="10"
-        android:inputType="numberDecimal"
         android:hint="Importe"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descripcion_input" />
 
     <EditText
         android:id="@+id/mes_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="235dp"
+        android:layout_height="69dp"
         android:layout_marginTop="160dp"
-        android:hint="Mes (Numero del 1 al 12)"
         android:ems="10"
+        android:hint="Mes (Numero del 1 al 12)"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -46,11 +46,11 @@
 
     <EditText
         android:id="@+id/descripcion_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="236dp"
+        android:layout_height="68dp"
         android:layout_marginTop="60dp"
-        android:hint="Descripcion"
         android:ems="10"
+        android:hint="Descripcion"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

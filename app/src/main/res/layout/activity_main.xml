@@ -17,22 +17,34 @@
         android:layout_height="108dp"
         android:background="@color/navy"
         android:text="Fijar objetivos"
-        app:layout_constraintBottom_toTopOf="@+id/mesactual"
+        app:layout_constraintBottom_toTopOf="@+id/totalMes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
+        android:id="@+id/totalMes"
+        android:layout_width="212dp"
+        android:layout_height="108dp"
+        android:background="@color/navy"
+        android:text="Total mes"
+        app:layout_constraintBottom_toTopOf="@+id/mesactual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/objetivos"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
         android:id="@+id/mesactual"
         android:layout_width="212dp"
         android:layout_height="108dp"
         android:background="@color/navy"
-        android:text="Ver mes en curso"
+        android:text="Historico"
         app:layout_constraintBottom_toTopOf="@+id/irTransaccion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/objetivos"
+        app:layout_constraintTop_toBottomOf="@+id/totalMes"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
