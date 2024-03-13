@@ -73,6 +73,22 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void addObjetivo (Double importe, String desc, Integer mes){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        mes+=10000;
+        cv.put(COLUMN_ID, mes);
+        cv.put(COLUMN_IMPORTE, importe);
+        cv.put(COLUMN_DESCRIPCION, desc);
+        cv.put(COLUMN_MES, mes);
+        long result = db.insert(TABLE_NAME,null, cv);
+        if(result == -1){
+            Toast.makeText(context, "Fallo al añadir el gasto", Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(context, "Gasto añadido!", Toast.LENGTH_LONG).show();
+        }
+    }
+
     Cursor readAllData(){
         String query = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();

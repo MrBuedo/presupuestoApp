@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PresupuestoApp"
         tools:targetApi="31">
         <activity
+            android:name=".ObjetivosActivity"
+            android:exported="false" />
+        <activity
             android:name=".TotalMesActivity"
             android:exported="false" />
         <activity

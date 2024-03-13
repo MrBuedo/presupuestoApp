@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (view.getId() == R.id.objetivos) { //aqui buscamos el id del boton directamente del elemento del layout, abajo uso otra forma pero ambas son validas
             showToast("Botón objetivos presionado");
-            //si aqui quieres que vayamos a otra activity haz lo de abajo
-
+            Intent intent1 = new Intent(this, ObjetivosActivity.class );
+            startActivity(intent1);
         } else if (view.getId() == R.id.mesactual) {
             Intent intent1 = new Intent(this, Mesactual.class );
             startActivity(intent1);
